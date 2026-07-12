@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: codey-service
+              uri: lb://CODEY
+              predicates:
+                - Path=/codey/**
+
+            - id: codex-service
+              uri: lb://CODEX
+              predicates:
+                - Path=/codex/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+ level:
+  org.springframework.cloud.gateway: DEBUG
+  org.springframework.web: INFO
+management:
+ endpoints:
+  web:
+   exposure:
+     include: "*"
+endpoint:
+ gateway:
+ enabled: true
