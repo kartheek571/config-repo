@@ -3,7 +3,7 @@ spring:
     name: codey
 
   datasource:
-    url: jdbc:mysql://localhost:3306/codey
+    url: jdbc:mysql://mysql:3306/codey
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: Cosmo@123
